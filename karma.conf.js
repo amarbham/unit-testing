@@ -14,9 +14,14 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-       './app/services/users/users.spec.js'
-    ],
+  files: [
+    './node_modules/angular/angular.js',                             // angular
+    './node_modules/angular-ui-router/release/angular-ui-router.js', // ui-router
+    './node_modules/angular-mocks/angular-mocks.js',                 // loads our modules for tests
+    './app/services/users/users.js',                                 // our Users factory
+    './app/app.js',                                                  // our angular app
+    './app/services/users/users.spec.js'                             // our test file for our Users factory
+  ],
 
 
     // list of files to exclude
