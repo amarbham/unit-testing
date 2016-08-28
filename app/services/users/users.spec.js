@@ -2,6 +2,37 @@
 describe('Users factory', function() {
     
     var Users;
+
+    var usersList = [
+    {
+      id: '1',
+      name: 'Jane',
+      role: 'Designer',
+      location: 'New York',
+      twitter: 'gijane'
+    },
+    {
+      id: '2',
+      name: 'Bob',
+      role: 'Developer',
+      location: 'New York',
+      twitter: 'billybob'
+    },
+    {
+      id: '3',
+      name: 'Jim',
+      role: 'Developer',
+      location: 'Chicago',
+      twitter: 'jimbo'
+    },
+    {
+      id: '4',
+      name: 'Bill',
+      role: 'Designer',
+      location: 'LA',
+      twitter: 'dabill'
+    }
+  ];
     // run code beforeEach code is executed.
     beforeEach(angular.mock.module('api.users'));
         
@@ -17,4 +48,19 @@ describe('Users factory', function() {
     it('should exist .all()', function(){
         expect(Users.all).toBeDefined();
     });
+
+    
+    it('.all() should return all users', function() {
+        expect(Users.all()).toEqual(usersList);
+    });
+    
+    
+    it('should return a user by id', function() {
+        var user = usersList[0]
+
+        expect(Users.getById('1')).toEqual(user);
+    });
+    
+        
+
 });
