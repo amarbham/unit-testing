@@ -60,7 +60,12 @@ describe('Users factory', function() {
 
         expect(Users.getById('1')).toEqual(user);
     });
+
     
+    it('should return not defined if user does not exist', function() {
+        expect(Users.getById('ABC')).not.toBeDefined();
+    });
+        
         
 
 });
