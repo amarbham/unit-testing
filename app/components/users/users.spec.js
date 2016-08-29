@@ -1,14 +1,28 @@
-
 describe('Users controller', function () {
 
-    var $controller, UsersController;
+    var $controller, UsersController, UsersFactory;
 
-    beforeEach(angular.mock.module('ui-router'));
-    beforeEach(angular.mock.module('component.users'));
+  // Mock the list of users we expect to use in our controller
+    var userList = [
+        { id: '1', name: 'Jane', role: 'Designer', location: 'New York', twitter: 'gijane' },
+        { id: '2', name: 'Bob', role: 'Developer', location: 'New York', twitter: 'billybob' },
+        { id: '3', name: 'Jim', role: 'Developer', location: 'Chicago', twitter: 'jimbo' },
+        { id: '4', name: 'Bill', role: 'Designer', location: 'LA', twitter: 'dabill' }
+    ];
 
-    beforeEach(inject(function (_controller_) {
-        $controller = _controller_;
-        UsersController = $controller('UsersController', {});
+    beforeEach(angular.mock.module('ui.router'));
+    beforeEach(angular.mock.module('components.users'));
+    beforeEach(angular.mock.module('api.users'));
+
+    beforeEach(inject(function (_$controller_, _Users_) {
+        $controller = _$controller_;
+        UsersFactory = _Users_;
+        // Spy and force the return value when UsersFactory.all() is called
+        spyOn(UsersFactory, 'all').and.callFake(function () {
+            return userList
+        })
+        // Add the factory as a controller dependency
+        UsersController = $controller('UsersController', {Users: UsersFactory});
     }))
 
     it('should be defined', function () {
@@ -16,4 +30,9 @@ describe('Users controller', function () {
     });
 
 
+    it('should initialise with a call to Users.all()', function () {
+        // The first expectation uses the spy we declared above and simply expects that a call to the all method will be made
+        expect(UsersFactory.all).toHaveBeenCalled();
+        expect(UsersController.users).toEqual(userList);
+    });
 });
