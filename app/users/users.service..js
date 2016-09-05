@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('api.users', [])
+    angular.module('app')
         .factory('Users', Users);
 
     function Users() {
