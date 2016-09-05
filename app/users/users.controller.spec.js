@@ -10,9 +10,7 @@ describe('Users controller', function () {
         { id: '4', name: 'Bill', role: 'Designer', location: 'LA', twitter: 'dabill' }
     ];
 
-    beforeEach(angular.mock.module('ui.router'));
-    beforeEach(angular.mock.module('components.users'));
-    beforeEach(angular.mock.module('api.users'));
+    beforeEach(angular.mock.module('app'));
 
     beforeEach(inject(function (_$controller_, _Users_) {
         $controller = _$controller_;

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
     angular.module('app')
-        .factory('Users', Users);
+        .factory('UsersService', UsersService);
 
-    function Users() {
+    function UsersService() {
         var Users = {}
 
         var userList = [
