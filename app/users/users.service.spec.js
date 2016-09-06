@@ -36,8 +36,8 @@ describe('Users factory', function () {
     // run code beforeEach code is executed.
     beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function (_Users_) {
-        Users = _Users_;
+    beforeEach(inject(function (_UsersService_) {
+        Users = _UsersService_;
     }));
 
 

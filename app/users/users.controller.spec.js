@@ -12,15 +12,16 @@ describe('Users controller', function () {
 
     beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function (_$controller_, _Users_) {
+    beforeEach(inject(function (_$controller_, _UsersService_) {
         $controller = _$controller_;
-        UsersFactory = _Users_;
+        UsersFactory = _UsersService_;
         // Spy and force the return value when UsersFactory.all() is called
         spyOn(UsersFactory, 'all').and.callFake(function () {
             return userList
         })
         // Add the factory as a controller dependency
-        UsersController = $controller('UsersController', {Users: UsersFactory});
+        UsersController = $controller('UsersController', {UsersFactory: UsersFactory});
+
     }))
 
     it('should be defined', function () {
