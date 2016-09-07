@@ -66,6 +66,6 @@ describe('Users factory', function () {
         expect(Users.getById('ABC')).not.toBeDefined();
     });
 
-
+    //  $httpBackend.when() Using when allows us to configure a fake response to a particular http request based on its parameters.
 
 });

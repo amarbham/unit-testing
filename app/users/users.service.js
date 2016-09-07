@@ -3,7 +3,7 @@
     angular.module('app')
         .factory('UsersService', UsersService);
 
-    function UsersService() {
+    function UsersService($http) {
         var Users = {}
 
         var userList = [
@@ -38,12 +38,22 @@
         ];
 
 
+        Users.get = function () {
+           return $http.get('users/data.json')
+                .then(function (response) {
+                    return response;
+                })
+                .catch(function (response) {
+                    console.log(response);
+                });
+        };
+
         Users.all = function () {
             return userList;
         };
 
-        Users.getById = function(id){
-            return userList.find(function(user){
+        Users.getById = function (id) {
+            return userList.find(function (user) {
                 return user.id == id
             });
         };
