@@ -4,7 +4,10 @@
         .factory('UsersService', UsersService);
 
     function UsersService($http) {
-        var Users = {}
+        var Users = {
+            getList: getList,
+            getById: getById
+        }
 
         var userList = [
             {
@@ -37,11 +40,11 @@
             }
         ];
 
-        Users.getList = function () {
+        function getList() {
             return userList;
         };
 
-        Users.getById = function (id) {
+        function getById(id) {
             return userList.find(function (user) {
                 return user.id == id
             });
