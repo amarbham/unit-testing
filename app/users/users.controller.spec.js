@@ -1,28 +1,24 @@
 describe('Users controller', function () {
 
-    var $controller, UsersController, UsersFactory, $httpBackend, coloursService;
+    var $controller, UsersController, UsersFactory, $httpBackend, coloursService, $storage;
 
     // Mock the list of users we expect to use in our controller
     beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function (_$controller_, _UsersService_, _$httpBackend_, _coloursService_) {
+    beforeEach(inject(function (_$controller_, _UsersService_, _$httpBackend_, _coloursService_, _$localStorage_) {
         coloursService = _coloursService_;
         UsersFactory = _UsersService_;
         $controller = _$controller_;
         $httpBackend = _$httpBackend_;
+        $storage  = _$localStorage_;
 
-        // Add the factory as a controller dependency
-        UsersController = $controller('UsersController', { UsersFactory: UsersFactory });
+        //Add controller dependencies
+        vm = $controller('UsersController', { UsersFactory: UsersFactory, coloursService: coloursService });
 
     }));
 
-    afterEach(function () {
-        store = {};
-    });
-
-
     it('should be defined', function () {
-        expect(UsersController).toBeDefined();
+        expect(vm).toBeDefined();
     });
 
 
@@ -37,6 +33,10 @@ describe('Users controller', function () {
 
         expect($httpBackend.flush).not.toThrow();
         //As soon as well call $httpBackend.flush(); the expectations we setup are verified in sequence.
-        expect(UsersController.response).toEqual(response);
+        expect(vm.response).toEqual(response);
+    });
+
+    it('should keep form data in the dom storage', function(){
+        expect(vm.form).toEqual($storage);
     });
 });
