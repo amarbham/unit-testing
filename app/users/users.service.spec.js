@@ -45,10 +45,6 @@ describe('Users factory', function () {
         expect(Users).toBeDefined();
     });
 
-    it('should get colours data', function () {
-        spyOn(Users, 'getList').and.callThrough();
-    });
-
     it('should return all users', function () {
         expect(Users.getList()).toEqual(usersList);
     });

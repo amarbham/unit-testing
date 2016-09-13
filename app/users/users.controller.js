@@ -5,15 +5,15 @@
 		.module('app')
 		.controller('UsersController', UsersController);
 
-	UsersController.$inject = ['UsersService', '$http'];
+	UsersController.$inject = ['coloursService', 'UsersService', '$http'];
 
-	function UsersController(UsersService, $http) {
+	function UsersController(coloursService, UsersService, $http) {
 		var vm = this;
 		vm.users = UsersService.getList();
 		vm.response;
 		
 		function activate(){
-			return UsersService.get().then(function(response){
+			return coloursService.getColours().then(function(response){
 				return vm.response = response.data;
 			});
 

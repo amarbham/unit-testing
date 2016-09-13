@@ -37,16 +37,6 @@
             }
         ];
 
-        Users.get = function () {
-           return $http.get('colours/colours.json')
-                .then(function (response) {
-                    return response;
-                })
-                .catch(function (response) {
-                    console.log(response);
-                });
-        };
-
         Users.getList = function () {
             return userList;
         };
