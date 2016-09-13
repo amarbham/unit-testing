@@ -14,16 +14,16 @@ module.exports = function (config) {
 
 
     // list of files / patterns to load in the browser
-  files: [
-    './node_modules/angular/angular.js',
-    './node_modules/angular-mocks/angular-mocks.js',
-    './node_modules/ngstorage/ngStorage.min.js',
-    './app/app.js',
-    './app/**/*.service.js',
-    './app/**/*.controller.js',
-    './app/**/*.service.spec.js',
-    './app/**/*.controller.spec.js'
-  ],
+    files: [
+      './node_modules/angular/angular.js',
+      './node_modules/angular-mocks/angular-mocks.js',
+      './node_modules/ngstorage/ngStorage.min.js',
+      './app/app.js',
+      './app/**/*.service.js',
+      './app/**/*.controller.js',
+      './app/**/*.service.spec.js',
+      './app/**/*.controller.spec.js'
+    ],
 
 
     // list of files to exclude

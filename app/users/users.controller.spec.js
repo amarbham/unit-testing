@@ -1,43 +1,32 @@
 describe('Users controller', function () {
 
-    var $controller, UsersController, UsersFactory, $httpBackend;
+    var $controller, UsersController, UsersFactory, $httpBackend, coloursService;
 
     // Mock the list of users we expect to use in our controller
-    var userList = [
-        { id: '1', name: 'Jane', role: 'Designer', location: 'New York', twitter: 'gijane' },
-        { id: '2', name: 'Bob', role: 'Developer', location: 'New York', twitter: 'billybob' },
-        { id: '3', name: 'Jim', role: 'Developer', location: 'Chicago', twitter: 'jimbo' },
-        { id: '4', name: 'Bill', role: 'Designer', location: 'LA', twitter: 'dabill' }
-    ];
-
     beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function (_$controller_, _UsersService_, _$httpBackend_) {
-        $controller = _$controller_;
+    beforeEach(inject(function (_$controller_, _UsersService_, _$httpBackend_, _coloursService_) {
+        coloursService = _coloursService_;
         UsersFactory = _UsersService_;
+        $controller = _$controller_;
         $httpBackend = _$httpBackend_;
 
-        // Spy and force the return value when UsersFactory.all() is called
-        spyOn(UsersFactory, 'getList').and.callFake(function () {
-            return userList
-        })
         // Add the factory as a controller dependency
         UsersController = $controller('UsersController', { UsersFactory: UsersFactory });
 
-    }))
+    }));
+
+    afterEach(function () {
+        store = {};
+    });
+
 
     it('should be defined', function () {
         expect(UsersController).toBeDefined();
     });
 
 
-    it('should initialise with a call to Users.getList()', function () {
-        // The first expectation uses the spy we declared above and simply expects that a call to the all method will be made
-        expect(UsersFactory.getList).toHaveBeenCalled();
-        expect(UsersController.users).toEqual(userList);
-    });
-
-    it('should make a request for colours data', function () {
+    it('should initialise with a request for colours data', function () {
         var response = {
             foo: 'bar'
         };

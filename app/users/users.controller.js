@@ -5,9 +5,9 @@
 		.module('app')
 		.controller('UsersController', UsersController);
 
-	UsersController.$inject = ['coloursService', 'UsersService', '$http'];
+	UsersController.$inject = ['coloursService', 'UsersService', '$http', '$localStorage'];
 
-	function UsersController(coloursService, UsersService, $http) {
+	function UsersController(coloursService, UsersService, $http, $localStoage) {
 		var vm = this;
 		vm.users = UsersService.getList();
 		vm.response;
