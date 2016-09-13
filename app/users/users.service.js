@@ -37,9 +37,8 @@
             }
         ];
 
-
         Users.get = function () {
-           return $http.get('users/data.json')
+           return $http.get('colours/colours.json')
                 .then(function (response) {
                     return response;
                 })
@@ -48,7 +47,7 @@
                 });
         };
 
-        Users.all = function () {
+        Users.getList = function () {
             return userList;
         };
 

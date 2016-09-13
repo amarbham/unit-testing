@@ -18,7 +18,7 @@ describe('Users controller', function () {
         $httpBackend = _$httpBackend_;
 
         // Spy and force the return value when UsersFactory.all() is called
-        spyOn(UsersFactory, 'all').and.callFake(function () {
+        spyOn(UsersFactory, 'getList').and.callFake(function () {
             return userList
         })
         // Add the factory as a controller dependency
@@ -31,20 +31,23 @@ describe('Users controller', function () {
     });
 
 
-    it('should initialise with a call to Users.all()', function () {
+    it('should initialise with a call to Users.getList()', function () {
         // The first expectation uses the spy we declared above and simply expects that a call to the all method will be made
-        expect(UsersFactory.all).toHaveBeenCalled();
+        expect(UsersFactory.getList).toHaveBeenCalled();
         expect(UsersController.users).toEqual(userList);
     });
 
-    it('should make a request for data', function () {
+    it('should make a request for colours data', function () {
+        var response = {
+            foo: 'bar'
+        };
 
         $httpBackend
-            .when('GET', 'users/data.json')
-            .respond(200, { foo: 'bar' });
+            .when('GET', 'colours/colours.json')
+            .respond(200, response);
 
         expect($httpBackend.flush).not.toThrow();
         //As soon as well call $httpBackend.flush(); the expectations we setup are verified in sequence.
-        expect(UsersController.response).toEqual({ foo: 'bar' });
+        expect(UsersController.response).toEqual(response);
     });
 });

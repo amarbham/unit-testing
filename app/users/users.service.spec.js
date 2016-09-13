@@ -45,15 +45,13 @@ describe('Users factory', function () {
         expect(Users).toBeDefined();
     });
 
-    it('should exist .all()', function () {
-        expect(Users.all).toBeDefined();
+    it('should get colours data', function () {
+        spyOn(Users, 'getList').and.callThrough();
     });
 
-
-    it('.all() should return all users', function () {
-        expect(Users.all()).toEqual(usersList);
+    it('should return all users', function () {
+        expect(Users.getList()).toEqual(usersList);
     });
-
 
     it('should return a user by id', function () {
         var user = usersList[0]

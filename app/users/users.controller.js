@@ -9,7 +9,7 @@
 
 	function UsersController(UsersService, $http) {
 		var vm = this;
-		vm.users = UsersService.all();
+		vm.users = UsersService.getList();
 		vm.response;
 		
 		function activate(){
