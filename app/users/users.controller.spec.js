@@ -35,8 +35,4 @@ describe('Users controller', function () {
         //As soon as well call $httpBackend.flush(); the expectations we setup are verified in sequence.
         expect(vm.response).toEqual(response);
     });
-
-    it('should keep form data in the dom storage', function(){
-        expect(vm.form).toEqual($storage);
-    });
 });

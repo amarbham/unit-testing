@@ -5,16 +5,14 @@
 		.module('app')
 		.controller('UsersController', UsersController);
 
-	UsersController.$inject = ['coloursService', 'UsersService', '$http', '$localStorage'];
+	UsersController.$inject = ['coloursService', 'UsersService', '$http'];
 
-	function UsersController(coloursService, UsersService, $http, $localStorage) {
+	function UsersController(coloursService, UsersService, $http) {
 		var vm = this;
-		vm.users = UsersService.getList();
+		var UsersService = UsersService
 		vm.response;
 
-		var $storage = $localStorage;
-
-		vm.form = $storage;
+		////////////
 
 		function activate() {
 			return coloursService.getColours().then(function (response) {
@@ -23,10 +21,8 @@
 
 		};
 
-		$storage.item = {
-			foo: 'bar'
-		}
-
 		activate();
+
+		////////////
 	};
 })();
