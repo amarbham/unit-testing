@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
@@ -11,28 +12,38 @@
   <title>Unit Testing</title>
 
   <!--bootstrap and our app css file-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="app.css">
 
 </head>
 
 <body ng-app="app">
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand">Unit Testing</a>
-      </div>
-    </div>
-  </nav>
 
-  <div ng-controller="UsersController as vm" ui-view>Hello, world!</div>
+  <menu-bar title="unitTest"></menu-bar>
+
+  <users-info name="Users Table"></users-info>
+<div class="container">
+   <accordion>
+      <!--The first panel with heading 1-->
+      <accordion-panel heading="heading 1">
+        This a panel
+      </accordion-panel>
+            <!--The secoind panel with heading 2-->
+      <accordion-panel heading="Heading 2">
+        this is another panel
+      </accordion-panel>
+    </accordion>
+    </div>
+
+  <!--<user-info name="Users Table"> </user-info>-->
+
+<!--  <div ng-controller="UsersController as vm" ui-view></div> -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
   <!--our angular app-->
   <script src="app.js"></script>
-  <script src="users/users.controller.js"></script>
-  <script src="users/users.service.js"></script>
-  <script src="colours/colours.service.js"></script>
-    
+
 </body>
+
 </html>
