@@ -53,6 +53,7 @@
       self.parent.selectPanel(self);
     };
 
+
     /*
     $onChanges() Called whenever one-way bindings are updated. 
         The changesObj is a hash whose keys are the names of the 
